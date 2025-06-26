@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Essentials - Product Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product h3 {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .product p {
+            color: #555;
+            padding: 0 10px 10px;
+        }
+
+        .product .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .product .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .navbar {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .navbar a:hover {
+            background: #0056b3;
+        }
+
+        .product .btn.wishlist {
+            background-color: #ff6347;
+        }
+
+        .product .btn:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="homepage.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="about.html">About Us</a>
+        <a href="cart.html">Add to Cart</a>
+        <a href="wishlist.html">Wishlist</a>
+        <a href="login.html">Login</a>
+    </div>
+    <h1>Kitchen Essentials - Product Gallery</h1>
+    <div class="gallery">
+        <div class="product">
+            <img src="images/knife-set.jpg" alt="Kitchen Knife Set">
+            <h3>Kitchen Knife Set</h3>
+            <p>Essential set for all your cutting needs.</p>
+            <p class="price">₹1494.00</p>
+            <button class="btn" onclick="addToCart('Kitchen Knife Set', 1494.00, 'images/knife-set.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Kitchen Knife Set', 1494.00, 'images/knife-set.jpg', 'Essential set for all your cutting needs.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/cutting-board.jpg" alt="Wooden Cutting Board">
+            <h3>Wooden Cutting Board</h3>
+            <p>Durable and stylish cutting surface.</p>
+            <p class="price">₹623.00</p>
+            <button class="btn" onclick="addToCart('Wooden Cutting Board', 623.00, 'images/cutting-board.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Wooden Cutting Board', 623.00, 'images/cutting-board.jpg', 'Durable and stylish cutting surface.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/cookware-set.jpg" alt="Cookware Set">
+            <h3>Cookware Set</h3>
+            <p>Complete set for all your cooking needs.</p>
+            <p class="price">₹3735.00</p>
+            <button class="btn" onclick="addToCart('Cookware Set', 3735.00, 'images/cookware-set.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Cookware Set', 3735.00, 'images/cookware-set.jpg', 'Complete set for all your cooking needs.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/measuring-cups.jpg" alt="Measuring Cups">
+            <h3>Measuring Cups</h3>
+            <p>Accurate measurements for perfect recipes.</p>
+            <p class="price">₹299.00</p>
+            <button class="btn" onclick="addToCart('Measuring Cups', 299.00, 'images/measuring-cups.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Measuring Cups', 299.00, 'images/measuring-cups.jpg', 'Accurate measurements for perfect recipes.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/mixing-cups.jpg" alt="Mixing Bowls">
+            <h3>Mixing Bowls</h3>
+            <p>Set of versatile mixing bowls for cooking and baking.</p>
+            <p class="price">₹747.00</p>
+            <button class="btn" onclick="addToCart('Mixing Bowls', 747.00, 'images/mixing-cups.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Mixing Bowls', 747.00, 'images/mixing-cups.jpg', 'Set of versatile mixing bowls for cooking and baking.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/spice-rack.jpg" alt="Spice Rack">
+            <h3>Spice Rack</h3>
+            <p>Organize your spices with this stylish rack.</p>
+            <p class="price">₹996.00</p>
+            <button class="btn" onclick="addToCart('Spice Rack', 996.00, 'images/spice-rack.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Spice Rack', 996.00, 'images/spice-rack.jpg', 'Organize your spices with this stylish rack.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/utensil-set.jpg" alt="Utensil Set">
+            <h3>Utensil Set</h3>
+            <p>Complete set of kitchen utensils.</p>
+            <p class="price">₹697.00</p>
+            <button class="btn" onclick="addToCart('Utensil Set', 697.00, 'images/utensil-set.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Utensil Set', 697.00, 'images/utensil-set.jpg', 'Complete set of kitchen utensils.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/coffee-maker.jpg" alt="Coffee Maker">
+            <h3>Coffee Maker</h3>
+            <p>Start your day with a perfect cup of coffee.</p>
+            <p class="price">₹1868.00</p>
+            <button class="btn" onclick="addToCart('Coffee Maker', 1868.00, 'images/coffee-maker.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Coffee Maker', 1868.00, 'images/coffee-maker.jpg', 'Start your day with a perfect cup of coffee.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/toaster.jpg" alt="Toaster">
+            <h3>Toaster</h3>
+            <p>Crispy toast for your breakfast.</p>
+            <p class="price">₹872.00</p>
+            <button class="btn" onclick="addToCart('Toaster', 872.00, 'images/toaster.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Toaster', 872.00, 'images/toaster.jpg', 'Crispy toast for your breakfast.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/blender.jpg" alt="Blender">
+            <h3>Blender</h3>
+            <p>Make smoothies and shakes with ease.</p>
+            <p class="price">₹1370.00</p>
+            <button class="btn" onclick="addToCart('Blender', 1370.00, 'images/blender.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Blender', 1370.00, 'images/blender.jpg', 'Make smoothies and shakes with ease.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/oven-mits.jpg" alt="Oven Mitts">
+            <h3>Oven Mitts</h3>
+            <p>Protect your hands while cooking.</p>
+            <p class="price">₹374.00</p>
+            <button class="btn" onclick="addToCart('Oven Mitts', 374.00, 'images/oven-mits.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Oven Mitts', 374.00, 'images/oven-mits.jpg', 'Protect your hands while cooking.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/colander.jpg" alt="Colander">
+            <h3>Colander</h3>
+            <p>Essential for draining pasta and vegetables.</p>
+            <p class="price">₹498.00</p>
+            <button class="btn" onclick="addToCart('Colander', 498.00, 'images/colander.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Colander', 498.00, 'images/colander.jpg', 'Essential for draining pasta and vegetables.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/food-storage.jpg" alt="Food Storage Containers">
+            <h3>Food Storage Containers</h3>
+            <p>Keep your food fresh and organized.</p>
+            <p class="price">₹797.00</p>
+            <button class="btn" onclick="addToCart('Food Storage Containers', 797.00, 'images/food-storage.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Food Storage Containers', 797.00, 'images/food-storage.jpg', 'Keep your food fresh and organized.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/rolling-pin.jpg" alt="Rolling Pin">
+            <h3>Rolling Pin</h3>
+            <p>Perfect for baking and pastry making.</p>
+            <p class="price">₹448.00</p>
+            <button class="btn" onclick="addToCart('Rolling Pin', 448.00, 'images/rolling-pin.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Rolling Pin', 448.00, 'images/rolling-pin.jpg', 'Perfect for baking and pastry making.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/whisk.jpg" alt="Whisk">
+            <h3>Whisk</h3>
+            <p>Essential for mixing and blending ingredients.</p>
+            <p class="price">₹249.00</p>
+            <button class="btn" onclick="addToCart('Whisk', 249.00, 'images/whisk.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Whisk', 249.00, 'images/whisk.jpg', 'Essential for mixing and blending ingredients.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/grater.jpg" alt="Grater">
+            <h3>Grater</h3>
+            <p>Versatile grater for cheese, vegetables, and more.</p>
+            <p class="price">₹349.00</p>
+            <button class="btn" onclick="addToCart('Grater', 349.00, 'images/grater.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Grater', 349.00, 'images/grater.jpg', 'Versatile grater for cheese, vegetables, and more.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/peeler.jpg" alt="Peeler">
+            <h3>Peeler</h3>
+            <p>Efficiently peel fruits and vegetables.</p>
+            <p class="price">₹199.00</p>
+            <button class="btn" onclick="addToCart('Peeler', 199.00, 'images/peeler.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Peeler', 199.00, 'images/peeler.jpg', 'Efficiently peel fruits and vegetables.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/kitchen-timers.jpg" alt="Kitchen Timer">
+            <h3>Kitchen Timer</h3>
+            <p>Keep track of cooking times with this timer.</p>
+            <p class="price">₹299.00</p>
+            <button class="btn" onclick="addToCart('Kitchen Timer', 299.00, 'images/kitchen-timers.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Kitchen Timer', 299.00, 'images/kitchen-timers.jpg', 'Keep track of cooking times with this timer.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/apron.jpg" alt="Apron">
+            <h3>Apron</h3>
+            <p>Protect your clothes while cooking.</p>
+            <p class="price">₹498.00</p>
+            <button class="btn" onclick="addToCart('Apron', 498.00, 'images/apron.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Apron', 498.00, 'images/apron.jpg', 'Protect your clothes while cooking.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/salt-pepper-shakers.jpg" alt="Salt and Pepper Shakers">
+            <h3>Salt and Pepper Shakers</h3>
+            <p>Essential seasoning tools for every meal.</p>
+            <p class="price">₹374.00</p>
+            <button class="btn" onclick="addToCart('Salt and Pepper Shakers', 374.00, 'images/salt-pepper-shakers.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Salt and Pepper Shakers', 374.00, 'images/salt-pepper-shakers.jpg', 'Essential seasoning tools for every meal.')">Add to Wishlist</button>
+        </div>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+        function addToCart(productName, price, imageUrl) {
+            const product = { 
+                name: productName, 
+                price: price, 
+                image: imageUrl,
+                currency: '₹'
+            };
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${productName} has been added to your cart for ₹${price.toFixed(2)}!`);
+        }
+
+        function addToWishlist(productName, price, imageUrl, description) {
+            const exists = wishlist.some(item => item.name === productName);
+            if (exists) {
+                alert(`${productName} is already in your wishlist!`);
+                return;
+            }
+
+            const product = {
+                name: productName,
+                price: price,
+                image: imageUrl,
+                description: description,
+                currency: '₹'
+            };
+            wishlist.push(product);
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            alert(`${productName} has been added to your wishlist!`);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist - Home Essentials</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .navbar {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .navbar a:hover {
+            background: #0056b3;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .wishlist-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .product h3 {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .product p {
+            color: #555;
+            padding: 0 10px 10px;
+        }
+
+        .product .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .product .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product .btn.remove {
+            background-color: #ff6347;
+        }
+
+        .product .btn:hover {
+            opacity: 0.8;
+        }
+
+        .no-items {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+            font-size: 1.2em;
+        }
+
+        #refreshBtn, #clearBtn {
+            display: inline-block;
+            margin: 20px 10px;
+            padding: 10px 20px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #refreshBtn {
+            background-color: #28a745;
+        }
+
+        #clearBtn {
+            background-color: #dc3545;
+        }
+
+        #refreshBtn:hover, #clearBtn:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="homepage.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="about.html">About Us</a>
+        <a href="cart.html">Add to Cart</a>
+        <a href="wishlist.html">Wishlist</a>
+        <a href="login.html">Login</a>
+    </div>
+    <h1>Wishlist - Home Essentials</h1>
+    <div class="wishlist-container">
+        <div class="gallery" id="wishlistGallery"></div>
+        <p class="no-items" id="noItemsMessage" style="display: none;">Your wishlist is empty.</p>
+        <button id="refreshBtn" onclick="displayWishlist()">Refresh Wishlist</button>
+        <button id="clearBtn" onclick="clearWishlist()">Clear Wishlist</button>
+    </div>
+
+    <script>
+        function displayWishlist() {
+            console.log('Starting displayWishlist');
+            const wishlistGallery = document.getElementById('wishlistGallery');
+            const noItemsMessage = document.getElementById('noItemsMessage');
+
+            if (!wishlistGallery || !noItemsMessage) {
+                console.error('DOM elements missing:', { wishlistGallery, noItemsMessage });
+                return;
+            }
+            console.log('DOM elements found');
+
+            wishlistGallery.innerHTML = '';
+            console.log('Cleared wishlistGallery');
+
+            let wishlist;
+            try {
+                wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+                console.log('Wishlist retrieved from localStorage:', wishlist);
+            } catch (e) {
+                console.error('Error parsing wishlist from localStorage:', e);
+                wishlist = [];
+            }
+
+            if (wishlist.length === 0) {
+                console.log('Wishlist is empty');
+                noItemsMessage.style.display = 'block';
+            } else {
+                console.log('Wishlist has items:', wishlist.length);
+                noItemsMessage.style.display = 'none';
+
+                wishlist.forEach((product, index) => {
+                    console.log(`Rendering item ${index}:`, product);
+                    const productElement = document.createElement('div');
+                    productElement.className = 'product';
+
+                    const name = product.name || 'Unnamed Product';
+                    const image = product.image || 'images/placeholder.jpg';
+                    const description = product.description || 'No description available';
+                    const price = product.price !== undefined ? product.price : 0;
+                    const currency = product.currency || '₹';
+
+                    productElement.innerHTML = `
+                        <img src="${image}" alt="${name}">
+                        <h3>${name}</h3>
+                        <p>${description}</p>
+                        <p class="price">${currency}${price.toFixed(2)}</p>
+                        <button class="btn" onclick="moveToCart('${name}', ${price}, '${image}')">Move to Cart</button>
+                        <button class="btn remove" onclick="removeFromWishlist('${name}')">Remove</button>
+                    `;
+                    wishlistGallery.appendChild(productElement);
+                    console.log(`Appended item ${index} to gallery`);
+                });
+            }
+        }
+
+        function moveToCart(productName, price, imageUrl) {
+            console.log(`Moving ${productName} to cart`);
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const product = { name: productName, price: price, image: imageUrl, currency: '₹' };
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            wishlist = wishlist.filter(item => item.name !== productName);
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            console.log('Updated wishlist after moving to cart:', wishlist);
+            displayWishlist();
+            alert(`${productName} has been moved to your cart!`);
+        }
+
+        function removeFromWishlist(productName) {
+            console.log(`Removing ${productName} from wishlist`);
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            wishlist = wishlist.filter(item => item.name !== productName);
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            console.log('Updated wishlist after removal:', wishlist);
+            displayWishlist();
+            alert(`${productName} has been removed from your wishlist!`);
+        }
+
+        function clearWishlist() {
+            console.log('Clearing wishlist');
+            localStorage.removeItem('wishlist');
+            displayWishlist();
+            alert('Wishlist has been cleared!');
+        }
+
+        // Initial load
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM fully loaded, running displayWishlist');
+            displayWishlist();
+        });
+
+        // Listen for storage changes
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'wishlist') {
+                console.log('Storage event detected, refreshing wishlist');
+                displayWishlist();
+            }
+        });
+    </script>
+</body>
+</html>

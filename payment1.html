@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razorpay Payment Integration</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+    <h2>Pay with Razorpay</h2>
+    <p><strong>Total Amount:</strong> ₹<span id="totalAmount">0.00</span></p>
+    <button id="payNow">Pay Now</button>
+
+    <script>
+        // Retrieve the cart total from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
+
+        // Display the total amount on the page
+        document.getElementById("totalAmount").textContent = totalAmount.toFixed(2);
+
+        document.getElementById("payNow").addEventListener("click", function () {
+            if (totalAmount <= 0) {
+                alert("Your cart is empty. Add items before checkout.");
+                return;
+            }
+
+            var options = {
+                "key": "rzp_test_HhsOEvvf2Mk23e", // Your Razorpay Test Key
+                "amount": totalAmount * 100, // Convert to paisa (₹1 = 100 paisa)
+                "currency": "INR",
+                "name": "Harsha",
+                "description": "Home-essentials",
+                "image": "https://url-to-image.jpg",
+                "handler": function (response) {
+                    alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+                    localStorage.removeItem('cart'); // Clear cart after successful payment
+                    window.location.href = "success.html"; // Redirect to success page
+                },
+                "prefill": {
+                    "name": "John Doe",
+                    "email": "foo@bar.com",
+                    "contact": "9797979797"
+                },
+                "theme": {
+                    "color": "#D6FFFA"
+                }
+            };
+
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        });
+    </script>
+</body>
+</html>

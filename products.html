@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products - Home Essentials</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .navbar {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .navbar a:hover {
+            background: #0056b3;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .product h3 {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .product p {
+            color: #555;
+            padding: 0 10px 10px;
+        }
+
+        .product .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .product .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product .btn.wishlist {
+            background-color: #ff6347;
+        }
+
+        .product .btn:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="homepage.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="about.html">About Us</a>
+        <a href="cart.html">Add to Cart</a>
+        <a href="wishlist.html">Wishlist</a>
+        <a href="login.html">Login</a>
+    </div>
+    <h1>All Products - Home Essentials</h1>
+    <div class="gallery" id="gallery">
+        <!-- Products will be dynamically inserted here -->
+    </div>
+
+    <script>
+        const products = [
+            // Kitchen Essentials Products
+            { name: "Kitchen Knife Set", price: 1494.00, image: "images/knife-set.jpg", description: "Essential set for all your cutting needs." },
+            { name: "Wooden Cutting Board", price: 623.00, image: "images/cutting-board.jpg", description: "Durable and stylish cutting surface." },
+            { name: "Cookware Set", price: 3735.00, image: "images/cookware-set.jpg", description: "Complete set for all your cooking needs." },
+            { name: "Measuring Cups", price: 299.00, image: "images/measuring-cups.jpg", description: "Accurate measurements for perfect recipes." },
+            { name: "Mixing Bowls", price: 747.00, image: "images/mixing-cups.jpg", description: "Set of versatile mixing bowls for cooking and baking." },
+            { name: "Spice Rack", price: 996.00, image: "images/spice-rack.jpg", description: "Organize your spices with this stylish rack." },
+            { name: "Utensil Set", price: 697.00, image: "images/utensil-set.jpg", description: "Complete set of kitchen utensils." },
+            { name: "Coffee Maker", price: 1868.00, image: "images/coffee-maker.jpg", description: "Start your day with a perfect cup of coffee." },
+            { name: "Toaster", price: 872.00, image: "images/toaster.jpg", description: "Crispy toast for your breakfast." },
+            { name: "Blender", price: 1370.00, image: "images/blender.jpg", description: "Make smoothies and shakes with ease." },
+            { name: "Oven Mitts", price: 374.00, image: "images/oven-mits.jpg", description: "Protect your hands while cooking." },
+            { name: "Colander", price: 498.00, image: "images/colander.jpg", description: "Essential for draining pasta and vegetables." },
+            { name: "Food Storage Containers", price: 797.00, image: "images/food-storage.jpg", description: "Keep your food fresh and organized." },
+            { name: "Rolling Pin", price: 448.00, image: "images/rolling-pin.jpg", description: "Perfect for baking and pastry making." },
+            { name: "Whisk", price: 249.00, image: "images/whisk.jpg", description: "Essential for mixing and blending ingredients." },
+            { name: "Grater", price: 349.00, image: "images/grater.jpg", description: "Versatile grater for cheese, vegetables, and more." },
+            { name: "Peeler", price: 199.00, image: "images/peeler.jpg", description: "Efficiently peel fruits and vegetables." },
+            { name: "Kitchen Timer", price: 299.00, image: "images/kitchen-timers.jpg", description: "Keep track of cooking times with this timer." },
+            { name: "Apron", price: 498.00, image: "images/apron.jpg", description: "Protect your clothes while cooking." },
+            { name: "Salt and Pepper Shakers", price: 374.00, image: "images/salt-pepper-shakers.jpg", description: "Essential seasoning tools for every meal." },
+
+            // Home Decor Products
+            { name: "Elegant Ceramic Vase", price: 1992.00, image: "images/vase.jpg", description: "Perfect centerpiece for your living room." },
+            { name: "Abstract Wall Art", price: 3320.00, image: "images/wall_art.jpg", description: "Modern art to enhance any space." },
+            { name: "Decorative Candle Holder", price: 996.00, image: "images/candle_holder.jpg", description: "Add warmth and charm with this candle holder." },
+            { name: "Cozy Area Rug", price: 5312.00, image: "images/rug.jpg", description: "Soft and stylish rug for your floors." },
+            { name: "Vintage Wall Mirror", price: 7968.00, image: "images/mirror.jpg", description: "Classic mirror design with an antique touch." },
+            { name: "Modern Plant Pot", price: 1660.00, image: "images/plant_pot.jpg", description: "Perfect for showcasing indoor plants." },
+            { name: "Rustic Wall Clock", price: 2656.00, image: "images/clock.jpg", description: "Add character to your home with this clock." },
+            { name: "Decorative Cushions", price: 1195.20, image: "images/cushions.jpg", description: "Brighten up your sofa with colorful cushions." },
+            { name: "Hanging Lantern", price: 2324.00, image: "images/lantern.jpg", description: "Beautiful lantern for ambient lighting." },
+            { name: "Wooden Photo Frame", price: 1460.80, image: "images/photo_frame.jpg", description: "Display your memories in style." },
+            { name: "Elegant Curtains", price: 3652.00, image: "images/curtains.jpg", description: "Add grace to your windows with these curtains." },
+            { name: "Table Lamp", price: 2988.00, image: "images/table_lamp.jpg", description: "Stylish lamp to brighten up your room." },
+            { name: "Modern Bookshelf", price: 5976.00, image: "images/bookshelf.jpg", description: "Keep your books organized elegantly." },
+            { name: "Cozy Throw Blanket", price: 1859.20, image: "images/throw_blanket.jpg", description: "Stay warm and cozy with this blanket." },
+            { name: "Artistic Sculpture", price: 9960.00, image: "images/sculpture.jpg", description: "A stunning piece for modern interiors." },
+            { name: "Decorative Lamp Shade", price: 1992.00, image: "images/lamp_shade.jpg", description: "Enhance lighting with a stylish lamp shade." },
+            { name: "Stylish Ottoman", price: 3984.00, image: "images/ottoman.jpg", description: "Comfortable and functional seating option." },
+            { name: "Scented Candles", price: 1195.20, image: "images/scented_candles.jpg", description: "Fill your home with relaxing aromas." },
+            { name: "Modern Coffee Table", price: 4980.00, image: "images/coffee_table.jpg", description: "Chic table to complement your living room." },
+            { name: "Hanging Planter", price: 1328.00, image: "images/hanging_planter.jpg", description: "Perfect for indoor greenery display." },
+
+            // Storage & Organization Products
+            { name: "Storage Bin", price: 1327.17, image: "images/storage_bin.jpg", description: "High-quality and versatile for your needs." },
+            { name: "Shelf Organizer", price: 1036.67, image: "images/shelf_organizer.jpg", description: "High-quality and versatile for your needs." },
+            { name: "Closet System", price: 9960.00, image: "images/closet_system.jpg", description: "High-quality and versatile for your needs." },
+            { name: "Under Bed Storage", price: 2116.50, image: "images/under_bed_storage.jpg", description: "High-quality and versatile for your needs." },
+            { name: "Hanging Organizer", price: 1557.25, image: "images/hanging_organizer.jpg", description: "High-quality and versatile for your needs." },
+            { name: "Laundry Basket", price: 1244.17, image: "images/laundry_basket.jpg", description: "High-quality and versatile for your needs." },
+            { name: "Kitchen Rack", price: 3735.00, image: "images/kitchen_rack.jpg", description: "High-quality and versatile for your needs." },
+            { name: "Bookcase", price: 7137.17, image: "images/bookcase.jpg", description: "High-quality and versatile for your needs." },
+            { name: "Drawer Dividers", price: 829.17, image: "images/drawer_dividers.jpg", description: "High-quality and versatile for your needs." },
+            { name: "Utility Cart", price: 2904.17, image: "images/utility_cart.jpg", description: "High-quality and versatile for your needs." },
+            { name: "Shoe Rack", price: 1866.67, image: "images/shoe_rack.jpg", description: "High-quality and versatile for your needs." },
+            { name: "Storage Basket", price: 995.17, image: "images/storage_basket.jpg", description: "High-quality and versatile for your needs." },
+            { name: "Garment Rack", price: 4565.00, image: "images/garment_rack.jpg", description: "High-quality and versatile for your needs." },
+            { name: "Pantry Organizer", price: 1742.17, image: "images/pantry_organizer.jpg", description: "High-quality and versatile for your needs." },
+            { name: "Folding Storage Box", price: 1119.67, image: "images/folding_box.jpg", description: "High-quality and versatile for your needs." },
+            { name: "Desk Organizer", price: 1432.75, image: "images/desk_organizer.jpg", description: "High-quality and versatile for your needs." },
+            { name: "Bathroom Caddy", price: 1658.17, image: "images/bathroom_caddy.jpg", description: "High-quality and versatile for your needs." },
+            { name: "Pegboard", price: 2282.50, image: "images/pegboard.jpg", description: "High-quality and versatile for your needs." },
+            { name: "Wall Hooks", price: 746.17, image: "images/wall_hooks.jpg", description: "High-quality and versatile for your needs." },
+            { name: "Storage Cabinet", price: 12450.00, image: "images/storage_cabinet.jpg", description: "High-quality and versatile for your needs." }
+        ];
+
+        const gallery = document.getElementById('gallery');
+
+        products.forEach(product => {
+            const productElement = document.createElement('div');
+            productElement.className = 'product';
+            productElement.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+                <h3>${product.name}</h3>
+                <p>${product.description}</p>
+                <p class="price">₹${product.price.toFixed(2)}</p>
+                <button class="btn" onclick="addToCart('${product.name}', ${product.price}, '${product.image}')">Add to Cart</button>
+                <button class="btn wishlist" onclick="addToWishlist('${product.name}')">Add to Wishlist</button>
+            `;
+            gallery.appendChild(productElement);
+        });
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function addToCart(productName, price, imageUrl) {
+            const product = { 
+                name: productName, 
+                price: price, 
+                image: imageUrl,
+                currency: '₹'
+            };
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${productName} has been added to your cart for ₹${price.toFixed(2)}!`);
+        }
+
+        function addToWishlist(productName) {
+            alert(`${productName} has been added to your wishlist!`);
+            // You can add wishlist logic here, e.g., storing in localStorage
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            wishlist.push(productName);
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        }
+    </script>
+</body>
+</html>

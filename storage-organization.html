@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage & Organization - Product Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .product p, .product span {
+            color: #555;
+        }
+
+        .product button {
+            margin: 5px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .product button.wishlist {
+            background-color: #ff5722;
+        }
+
+        .navbar {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .navbar a:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="homepage.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="about.html">About Us</a>
+        <a href="cart.html">Add to Cart</a>
+        <a href="wishlist.html">Wishlist</a>
+        <a href="login.html">Login</a>
+    </div>
+    <h1>Storage & Organization Products</h1>
+    <div class="gallery" id="gallery">
+    </div>
+
+    <script>
+        const products = [
+            {name: "Storage Bin", price: 1327.17, image: "images/storage_bin.jpg"},
+            {name: "Shelf Organizer", price: 1036.67, image: "images/shelf_organizer.jpg"},
+            {name: "Closet System", price: 9960.00, image: "images/closet_system.jpg"},
+            {name: "Under Bed Storage", price: 2116.50, image: "images/under_bed_storage.jpg"},
+            {name: "Hanging Organizer", price: 1557.25, image: "images/hanging_organizer.jpg"},
+            {name: "Laundry Basket", price: 1244.17, image: "images/laundry_basket.jpg"},
+            {name: "Kitchen Rack", price: 3735.00, image: "images/kitchen_rack.jpg"},
+            {name: "Bookcase", price: 7137.17, image: "images/bookcase.jpg"},
+            {name: "Drawer Dividers", price: 829.17, image: "images/drawer_dividers.jpg"},
+            {name: "Utility Cart", price: 2904.17, image: "images/utility_cart.jpg"},
+            {name: "Shoe Rack", price: 1866.67, image: "images/shoe_rack.jpg"},
+            {name: "Storage Basket", price: 995.17, image: "images/storage_basket.jpg"},
+            {name: "Garment Rack", price: 4565.00, image: "images/garment_rack.jpg"},
+            {name: "Pantry Organizer", price: 1742.17, image: "images/pantry_organizer.jpg"},
+            {name: "Folding Storage Box", price: 1119.67, image: "images/folding_box.jpg"},
+            {name: "Desk Organizer", price: 1432.75, image: "images/desk_organizer.jpg"},
+            {name: "Bathroom Caddy", price: 1658.17, image: "images/bathroom_caddy.jpg"},
+            {name: "Pegboard", price: 2282.50, image: "images/pegboard.jpg"},
+            {name: "Wall Hooks", price: 746.17, image: "images/wall_hooks.jpg"},
+            {name: "Storage Cabinet", price: 12450.00, image: "images/storage_cabinet.jpg"}
+        ];
+
+        const gallery = document.getElementById('gallery');
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+        products.forEach(product => {
+            const productElement = document.createElement('div');
+            productElement.className = 'product';
+            productElement.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+                <h3>${product.name}</h3>
+                <p>High-quality and versatile for your needs.</p>
+                <span>Price: ₹${product.price.toFixed(2)}</span><br>
+                <button onclick="addToCart('${product.name}', ${product.price}, '${product.image}')">Add to Cart</button>
+                <button class="wishlist" onclick="addToWishlist('${product.name}', ${product.price}, '${product.image}')">Add to Wishlist</button>
+            `;
+            gallery.appendChild(productElement);
+        });
+
+        function addToCart(productName, price, imageUrl) {
+            const product = { 
+                name: productName, 
+                price: price, 
+                image: imageUrl,
+                currency: '₹'
+            };
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${productName} added to cart!`);
+        }
+
+        function addToWishlist(productName, price, imageUrl) {
+            const product = {
+                name: productName,
+                price: price,
+                image: imageUrl,
+                currency: '₹'
+            };
+            // Check if item already exists in wishlist
+            if (!wishlist.some(item => item.name === productName)) {
+                wishlist.push(product);
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                alert(`${productName} added to wishlist!`);
+            } else {
+                alert(`${productName} is already in your wishlist!`);
+            }
+        }
+    </script>
+</body>
+</html>
