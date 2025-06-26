@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Decor - Product Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product h3 {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .product p {
+            color: #555;
+            padding: 0 10px 10px;
+        }
+
+        .product .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .product .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .navbar {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .navbar a:hover {
+            background: #0056b3;
+        }
+
+        .product .btn.wishlist {
+            background-color: #ff6347;
+        }
+
+        .product .btn:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="homepage.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="about.html">About Us</a>
+        <a href="cart.html">Add to Cart</a>
+        <a href="wishlist.html">Wishlist</a>
+        <a href="login.html">Login</a>
+    </div>
+    <h1>Home Decor - Product Gallery</h1>
+    <div class="gallery">
+        <div class="product">
+            <img src="images/vase.jpg" alt="Elegant Ceramic Vase">
+            <h3>Elegant Ceramic Vase</h3>
+            <p>Perfect centerpiece for your living room.</p>
+            <p class="price">₹1992.00</p>
+            <button class="btn" onclick="addToCart('Elegant Ceramic Vase', 1992.00, 'images/vase.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Elegant Ceramic Vase', 1992.00, 'images/vase.jpg', 'Perfect centerpiece for your living room.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/wall_art.jpg" alt="Abstract Wall Art">
+            <h3>Abstract Wall Art</h3>
+            <p>Modern art to enhance any space.</p>
+            <p class="price">₹3320.00</p>
+            <button class="btn" onclick="addToCart('Abstract Wall Art', 3320.00, 'images/wall_art.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Abstract Wall Art', 3320.00, 'images/wall_art.jpg', 'Modern art to enhance any space.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/candle_holder.jpg" alt="Decorative Candle Holder">
+            <h3>Decorative Candle Holder</h3>
+            <p>Add warmth and charm with this candle holder.</p>
+            <p class="price">₹996.00</p>
+            <button class="btn" onclick="addToCart('Decorative Candle Holder', 996.00, 'images/candle_holder.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Decorative Candle Holder', 996.00, 'images/candle_holder.jpg', 'Add warmth and charm with this candle holder.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/rug.jpg" alt="Cozy Area Rug">
+            <h3>Cozy Area Rug</h3>
+            <p>Soft and stylish rug for your floors.</p>
+            <p class="price">₹5312.00</p>
+            <button class="btn" onclick="addToCart('Cozy Area Rug', 5312.00, 'images/rug.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Cozy Area Rug', 5312.00, 'images/rug.jpg', 'Soft and stylish rug for your floors.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/mirror.jpg" alt="Vintage Wall Mirror">
+            <h3>Vintage Wall Mirror</h3>
+            <p>Classic mirror design with an antique touch.</p>
+            <p class="price">₹7968.00</p>
+            <button class="btn" onclick="addToCart('Vintage Wall Mirror', 7968.00, 'images/mirror.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Vintage Wall Mirror', 7968.00, 'images/mirror.jpg', 'Classic mirror design with an antique touch.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/plant_pot.jpg" alt="Modern Plant Pot">
+            <h3>Modern Plant Pot</h3>
+            <p>Perfect for showcasing indoor plants.</p>
+            <p class="price">₹1660.00</p>
+            <button class="btn" onclick="addToCart('Modern Plant Pot', 1660.00, 'images/plant_pot.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Modern Plant Pot', 1660.00, 'images/plant_pot.jpg', 'Perfect for showcasing indoor plants.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/clock.jpg" alt="Rustic Wall Clock">
+            <h3>Rustic Wall Clock</h3>
+            <p>Add character to your home with this clock.</p>
+            <p class="price">₹2656.00</p>
+            <button class="btn" onclick="addToCart('Rustic Wall Clock', 2656.00, 'images/clock.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Rustic Wall Clock', 2656.00, 'images/clock.jpg', 'Add character to your home with this clock.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/cushions.jpg" alt="Decorative Cushions">
+            <h3>Decorative Cushions</h3>
+            <p>Brighten up your sofa with colorful cushions.</p>
+            <p class="price">₹1195.20</p>
+            <button class="btn" onclick="addToCart('Decorative Cushions', 1195.20, 'images/cushions.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Decorative Cushions', 1195.20, 'images/cushions.jpg', 'Brighten up your sofa with colorful cushions.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/lantern.jpg" alt="Hanging Lantern">
+            <h3>Hanging Lantern</h3>
+            <p>Beautiful lantern for ambient lighting.</p>
+            <p class="price">₹2324.00</p>
+            <button class="btn" onclick="addToCart('Hanging Lantern', 2324.00, 'images/lantern.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Hanging Lantern', 2324.00, 'images/lantern.jpg', 'Beautiful lantern for ambient lighting.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/photo_frame.jpg" alt="Wooden Photo Frame">
+            <h3>Wooden Photo Frame</h3>
+            <p>Display your memories in style.</p>
+            <p class="price">₹1460.80</p>
+            <button class="btn" onclick="addToCart('Wooden Photo Frame', 1460.80, 'images/photo_frame.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Wooden Photo Frame', 1460.80, 'images/photo_frame.jpg', 'Display your memories in style.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/curtains.jpg" alt="Elegant Curtains">
+            <h3>Elegant Curtains</h3>
+            <p>Add grace to your windows with these curtains.</p>
+            <p class="price">₹3652.00</p>
+            <button class="btn" onclick="addToCart('Elegant Curtains', 3652.00, 'images/curtains.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Elegant Curtains', 3652.00, 'images/curtains.jpg', 'Add grace to your windows with these curtains.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/table_lamp.jpg" alt="Table Lamp">
+            <h3>Table Lamp</h3>
+            <p>Stylish lamp to brighten up your room.</p>
+            <p class="price">₹2988.00</p>
+            <button class="btn" onclick="addToCart('Table Lamp', 2988.00, 'images/table_lamp.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Table Lamp', 2988.00, 'images/table_lamp.jpg', 'Stylish lamp to brighten up your room.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/bookshelf.jpg" alt="Modern Bookshelf">
+            <h3>Modern Bookshelf</h3>
+            <p>Keep your books organized elegantly.</p>
+            <p class="price">₹5976.00</p>
+            <button class="btn" onclick="addToCart('Modern Bookshelf', 5976.00, 'images/bookshelf.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Modern Bookshelf', 5976.00, 'images/bookshelf.jpg', 'Keep your books organized elegantly.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/throw_blanket.jpg" alt="Cozy Throw Blanket">
+            <h3>Cozy Throw Blanket</h3>
+            <p>Stay warm and cozy with this blanket.</p>
+            <p class="price">₹1859.20</p>
+            <button class="btn" onclick="addToCart('Cozy Throw Blanket', 1859.20, 'images/throw_blanket.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Cozy Throw Blanket', 1859.20, 'images/throw_blanket.jpg', 'Stay warm and cozy with this blanket.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/sculpture.jpg" alt="Artistic Sculpture">
+            <h3>Artistic Sculpture</h3>
+            <p>A stunning piece for modern interiors.</p>
+            <p class="price">₹9960.00</p>
+            <button class="btn" onclick="addToCart('Artistic Sculpture', 9960.00, 'images/sculpture.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Artistic Sculpture', 9960.00, 'images/sculpture.jpg', 'A stunning piece for modern interiors.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/lamp_shade.jpg" alt="Decorative Lamp Shade">
+            <h3>Decorative Lamp Shade</h3>
+            <p>Enhance lighting with a stylish lamp shade.</p>
+            <p class="price">₹1992.00</p>
+            <button class="btn" onclick="addToCart('Decorative Lamp Shade', 1992.00, 'images/lamp_shade.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Decorative Lamp Shade', 1992.00, 'images/lamp_shade.jpg', 'Enhance lighting with a stylish lamp shade.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/ottoman.jpg" alt="Stylish Ottoman">
+            <h3>Stylish Ottoman</h3>
+            <p>Comfortable and functional seating option.</p>
+            <p class="price">₹3984.00</p>
+            <button class="btn" onclick="addToCart('Stylish Ottoman', 3984.00, 'images/ottoman.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Stylish Ottoman', 3984.00, 'images/ottoman.jpg', 'Comfortable and functional seating option.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/scented_candles.jpg" alt="Scented Candles">
+            <h3>Scented Candles</h3>
+            <p>Fill your home with relaxing aromas.</p>
+            <p class="price">₹1195.20</p>
+            <button class="btn" onclick="addToCart('Scented Candles', 1195.20, 'images/scented_candles.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Scented Candles', 1195.20, 'images/scented_candles.jpg', 'Fill your home with relaxing aromas.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/coffee_table.jpg" alt="Modern Coffee Table">
+            <h3>Modern Coffee Table</h3>
+            <p>Chic table to complement your living room.</p>
+            <p class="price">₹4980.00</p>
+            <button class="btn" onclick="addToCart('Modern Coffee Table', 4980.00, 'images/coffee_table.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Modern Coffee Table', 4980.00, 'images/coffee_table.jpg', 'Chic table to complement your living room.')">Add to Wishlist</button>
+        </div>
+        <div class="product">
+            <img src="images/hanging_planter.jpg" alt="Hanging Planter">
+            <h3>Hanging Planter</h3>
+            <p>Perfect for indoor greenery display.</p>
+            <p class="price">₹1328.00</p>
+            <button class="btn" onclick="addToCart('Hanging Planter', 1328.00, 'images/hanging_planter.jpg')">Add to Cart</button>
+            <button class="btn wishlist" onclick="addToWishlist('Hanging Planter', 1328.00, 'images/hanging_planter.jpg', 'Perfect for indoor greenery display.')">Add to Wishlist</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize cart from localStorage or empty array if none exists
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function addToCart(productName, price, imageUrl) {
+            const product = { 
+                name: productName, 
+                price: price, 
+                image: imageUrl,
+                currency: '₹'
+            };
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${productName} has been added to your cart for ₹${price.toFixed(2)}!`);
+        }
+
+        // Initialize wishlist from localStorage or empty array if none exists
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+        function addToWishlist(productName, price, imageUrl, description) {
+            // Check if the product is already in the wishlist to avoid duplicates
+            const exists = wishlist.some(item => item.name === productName);
+            if (exists) {
+                alert(`${productName} is already in your wishlist!`);
+                return;
+            }
+
+            const product = {
+                name: productName,
+                price: price,
+                image: imageUrl,
+                description: description,
+                currency: '₹'
+            };
+            wishlist.push(product);
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            alert(`${productName} has been added to your wishlist!`);
+        }
+    </script>
+</body>
+</html>

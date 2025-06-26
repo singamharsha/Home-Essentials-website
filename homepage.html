@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - House Essentials</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            background: url('images/back.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .header img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin: 0;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .navbar a:hover {
+            background: #0056b3;
+        }
+
+        /* Flex container */
+        .sections-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 20px;
+            height: calc(80vh - 120px);
+            box-sizing: border-box;
+            margin-top: 60px;
+        }
+
+        .section {
+            width: 32%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background: rgb(210, 211, 216);
+            overflow: hidden;
+        }
+
+        .section-img {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .section-content {
+            padding: 15px;
+            color: black;
+        }
+
+        .section:hover {
+            transform: scale(1.05);
+        }
+
+        .section h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="homepage.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="about.html">About Us</a>
+        <a href="cart.html">Add to Cart</a>  <!-- Added Add to Cart -->
+        <a href="wishlist.html">Wishlist</a>  <!-- Added Wishlist -->
+        <a href="login.html">Login</a>
+    </div>
+
+    <!-- Header with Logo -->
+    <div class="header">
+        <img src="images/logo.png" alt="Home Essentials Logo">
+        <h1>HOME ESSENTIALS</h1>
+    </div>
+
+    <!-- Horizontal Sections -->
+    <div class="sections-container">
+        <div class="section" onclick="window.location.href='kitchen-essentials.html'">
+            <div class="section-img" style="background-image: url('images/kitchen.jpg');"></div>
+            <div class="section-content">
+                <h2>Kitchen Essentials</h2>
+                <p>Discover the best kitchen tools and accessories to make your cooking experience amazing.</p>
+            </div>
+        </div>
+
+        <div class="section" onclick="window.location.href='home-decor.html'">
+            <div class="section-img" style="background-image: url('images/homedecor.jpg');"></div>
+            <div class="section-content">
+                <h2>Home Decor</h2>
+                <p>Bring charm and warmth to your living spaces with our stunning home decor collection.</p>
+            </div>
+        </div>
+
+        <div class="section" onclick="window.location.href='storage-organization.html'">
+            <div class="section-img" style="background-image: url('images/storage.jpg');"></div>
+            <div class="section-content">
+                <h2>Storage Organization</h2>
+                <p>Stay organized with our functional and stylish storage solutions for every room.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
